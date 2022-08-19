@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number of Trades</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="shortcut icon" href="https://i.ibb.co/KrSf535/crypto-icon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="w3-center w3-large w3-sans-serif">
+        Numbers Of Buyers - Cryptocurrency
+    </div>
+    <div>
+        <form id="form">
+            <div class="w3-row">
+                <div class="w3-third">
+                    <select name="interval" class="w3-input">
+                        <option value="5m">5 minutes</option>
+                        <option value="15m">15 minutes</option>
+                        <option value="1h">1 hour</option>
+                        <option value="4h">4 hours</option>
+                        <option value="1d">1 day</option>
+                    </select>
+                </div>
+                <div class="w3-third">
+                    <select name="market" class="w3-input">
+                        <option value="BTCUSDT">btcusdt</option>
+                        <option value="ETHUSDT">ethusdt</option>
+                        <option value="BUSDUSDT">busdusdt</option>
+                        <option value="ETCUSDT">etcusdt</option>
+                        <option value="USDCUSDT">usdcusdt</option>
+                        <option value="SOLUSDT">solusdt</option>
+                        <option value="BNBUSDT">bnbusdt</option>
+                        <option value="SANTOSUSDT">santosusdt</option>
+                        <option value="STGUSDT">stgusdt</option>
+                        <option value="SHIBUSDT">shibusdt</option>
+                        <option value="DOGEUSDT">dogeusdt</option>
+                        <option value="CHZUSDT">chzusdt</option>
+                        <option value="XRPUSDT">xrpusdt</option>
+                        <option value="ADAUSDT">adausdt</option>
+                        <option value="PORTOUSDT">portousdt</option>
+                        <option value="MATICUSDT">maticusdt</option>
+                        <option value="FILUSDT">filusdt</option>
+                        <option value="NEARUSDT">nearusdt</option>
+                        <option value="OPUSDT">opusdt</option>
+                        <option value="AVAXUSDT">avaxusdt</option>
+                        <option value="APEUSDT">apeusdt</option>
+                        <option value="GMTUSDT">gmtusdt</option>
+                        <option value="EOSUSDT">eosusdt</option>
+                        <option value="GALAUSDT">galausdt</option>
+                        <option value="LINKUSDT">linkusdt</option>
+                        <option value="FTMUSDT">ftmusdt</option>
+                        <option value="DOTUSDT">dotusdt</option>
+                        <option value="SANDUSDT">sandusdt</option>
+                        <option value="LAZIOUSDT">laziousdt</option>
+                        <option value="ATOMUSDT">atomusdt</option>
+                        <option value="LTCUSDT">ltcusdt</option>
+                        <option value="OGUSDT">ogusdt</option>
+                        <option value="EURUSDT">eurusdt</option>
+                        <option value="ALPINEUSDT">alpineusdt</option>
+                        <option value="RUNEUSDT">runeusdt</option>
+                        <option value="TRXUSDT">trxusdt</option>
+                        <option value="SPELLUSDT">spellusdt</option>
+                        <option value="WAVESUSDT">wavesusdt</option>
+                        <option value="JASMYUSDT">jasmyusdt</option>
+                        <option value="AXSUSDT">axsusdt</option>
+                        <option value="LDOUSDT">ldousdt</option>
+                        <option value="AAVEUSDT">aaveusdt</option>
+                        <option value="ROSEUSDT">roseusdt</option>
+                        <option value="MANAUSDT">manausdt</option>
+                        <option value="FLOWUSDT">flowusdt</option>
+                        <option value="XMRUSDT">xmrusdt</option>
+                        <option value="UNFIUSDT">unfiusdt</option>
+                        <option value="UNIUSDT">uniusdt</option>
+                        <option value="ENSUSDT">ensusdt</option>
+                        <option value="KNCUSDT">kncusdt</option>
+                    </select>
+                </div>
+                <div class="w3-third">
+                    <input type="submit" value="send" class="w3-input">
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div id="widget">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
