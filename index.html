@@ -6,28 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number of Trades</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="https://i.ibb.co/KrSf535/crypto-icon.png" type="image/x-icon">
 </head>
 
-<body>
-    <div class="w3-center w3-large w3-sans-serif">
+<body class="w3-panel">
+    <div class="w3-center w3-xlarge w3-sans-serif w3-wide w3-row">
         Numbers Of trades - Cryptocurrency
     </div>
-    <div>
-        <form id="form">
+    <hr>
+    <div class="w3-row">
+        <form id="form" method="post">
             <div class="w3-row">
-                <div class="w3-third">
-                    <select name="interval" class="w3-input">
-                        <option value="5m">5 minutes</option>
-                        <option value="15m">15 minutes</option>
-                        <option value="1h">1 hour</option>
-                        <option value="4h">4 hours</option>
-                        <option value="1d">1 day</option>
-                    </select>
-                </div>
-                <div class="w3-third">
+            
+                <div class="w3-third w3-card">
                     <select name="market" class="w3-input">
                         <option value="BTCUSDT">btcusdt</option>
                         <option value="ETHUSDT">ethusdt</option>
@@ -81,16 +73,26 @@
                         <option value="KNCUSDT">kncusdt</option>
                     </select>
                 </div>
-                <div class="w3-third">
-                    <input type="submit" value="send" class="w3-input">
+
+                <div class="w3-third w3-card">
+                    <select name="interval" class="w3-input">
+                        <option value="5m">5 minutes</option>
+                        <option value="15m">15 minutes</option>
+                        <option value="1h">1 hour</option>
+                        <option value="4h">4 hours</option>
+                        <option value="1d">1 day</option>
+                    </select>
                 </div>
+
+                <div class="w3-third w3-card">
+                    <input type="submit" value="Render Chart" class="w3-input">
+                </div>
+
             </div>
         </form>
     </div>
-    <hr>
-    <div id="widget">
-        <canvas id="myChart"></canvas>
-    </div>
+    <div id="chart" class="w3-row"></div>
+    <script src="./lightweight-charts.standalone.production.js"></script>
     <script src="./index.js"></script>
 </body>
 

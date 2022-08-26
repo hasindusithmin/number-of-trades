@@ -1,73 +1,51 @@
-let labels = []
-let numbers_of_traders = []
-fetch('https://www.binance.com/api/v3/klines?symbol=BTCUSDT&interval=5m')
-    .then(res=>res.json())
-        .then($data=>{
-            for (dt of $data) {
-                labels.push(new Date(dt[0]).toLocaleString())
-                numbers_of_traders.push(dt[8])
-            }
-        })
 
-
-let data = {
-    labels: labels,
-    datasets: [{
-        label: `Number of Trades Bitcoin 5m`,
-        data: numbers_of_traders,
-        fill: true,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-    }]
-};
-
-let config = {
-    type: 'line',
-    data: data
+const chartopt = {
+    width: 800,
+    height: 500,
+    layout: {
+        backgroundColor: '#ffffff',
+        textColor: 'rgba(33, 56, 77, 1)',
+    },
+    grid: {
+        vertLines: {
+            color: 'rgba(197, 203, 206, 0.7)',
+        },
+        horzLines: {
+            color: 'rgba(197, 203, 206, 0.7)',
+        },
+    },
+    timeScale: {
+        timeVisible: true,
+        secondsVisible: false,
+    },
 }
 
-let myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-);
-
-
-
-document.getElementById('form').onsubmit = e=>{
+document.getElementById('form').onsubmit = e => {
     e.preventDefault()
+    // Get form name:interval 
     const interval = e.target.interval.value;
+    // Get form name:market 
     const market = e.target.market.value;
+    // Create empty data array 
+    const data = []
+    // Fetch required payload
     fetch(`https://www.binance.com/api/v3/klines?symbol=${market}&interval=${interval}`)
-    .then(res=>{
-        labels = []
-        numbers_of_traders = []
-        data = {}
-        config = {}
-        return res.json()
-    })
-        .then($data=>{
-            for (dt of $data) {
-                labels.push(new Date(dt[0]).toLocaleString())
-                numbers_of_traders.push(dt[8])
+        .then(res => res.json())
+        .then(Data => {
+            document.getElementById('chart').innerHTML = ''
+            // Override 'data' array 
+            for (D of Data) {
+                data.push({ time: D[0] / 1000, value: D[8] });
             }
-            data = {
-                labels: labels,
-                datasets: [{
-                    label: `Number of Trades ${market.toUpperCase()} ${interval}`,
-                    data: numbers_of_traders,
-                    fill: true,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            }
-            config = {
-                type: 'line',
-                data: data,
-            }
-            myChart.destroy()
-            myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            )
+            // Draw chart -> <div id="chart"></div>
+            const chart = LightweightCharts.createChart(document.getElementById('chart'),chartopt)
+            const lineSeries = chart.addLineSeries();
+            lineSeries.setData(data)
+            // Chart -> Responsive 
+            new ResizeObserver(entries => {
+                if (entries.length === 0 || entries[0].target !== document.getElementById('chart')) { return; }
+                const newRect = entries[0].contentRect;
+                chart.applyOptions({ height: newRect.height, width: newRect.width });
+            }).observe(document.getElementById('chart'));
         })
 }
